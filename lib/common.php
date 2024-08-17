@@ -102,8 +102,11 @@ function convertNewlinesToParagraphs($text)
 
 function redirectAndExit($script)
 {
+	$relativeUrl = $_SERVER['PHP_SELF'];
+    $urlFolder = substr($relativeUrl, 0, strrpos($relativeUrl, '/') + 1);
+
 	$host = $_SERVER['HTTP_HOST'];
-	header('Location: http://' . $host . '/' . $script);
+	header('Location: http://' . $host . urlFolder . $script);
 	exit();
 }
 
