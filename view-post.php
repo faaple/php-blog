@@ -76,7 +76,7 @@ else
 			</div>
 
 			<?php // This is already escaped, so doesn't need further escaping ?>
-			<?php echo convertNewlinesToParagraphs($row['body']) ?>
+			<?php echo renderMarkdown($row['body']) ?>
 		</div>
 
 		<?php require 'templates/list-comments.php' ?>

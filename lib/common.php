@@ -1,4 +1,5 @@
 <?php
+require_once 'vendor/parsedown/Parsedown.php';
 
 /**
  * Gets the root path of the project
@@ -100,13 +101,19 @@ function convertNewlinesToParagraphs($text)
 	return '<p>' . str_replace("\n", "</p><p>", $escaped) . '</p>';
 }
 
+function renderMarkdown($markdown) {
+    $parsedown = new Parsedown();
+	$parsedown->setSafeMode(true);
+    return $parsedown->text($markdown);
+}
+
 function redirectAndExit($script)
 {
 	$relativeUrl = $_SERVER['PHP_SELF'];
     $urlFolder = substr($relativeUrl, 0, strrpos($relativeUrl, '/') + 1);
 
 	$host = $_SERVER['HTTP_HOST'];
-	header('Location: http://' . $host . urlFolder . $script);
+	header('Location: http://' . $host . $urlFolder . $script);
 	exit();
 }
 
