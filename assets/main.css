@@ -100,6 +100,7 @@ body {
 	color: grey;
 	float: left;
 	text-align: right;
+	clear: left;
 }
 
 #post-list {

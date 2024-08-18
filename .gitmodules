@@ -1,3 +1,6 @@
 [submodule "vendor/password_compat"]
 	path = vendor/password_compat
 	url = https://github.com/ircmaxell/password_compat.git
+[submodule "vendor/parsedown"]
+	path = vendor/parsedown
+	url = https://github.com/erusev/parsedown

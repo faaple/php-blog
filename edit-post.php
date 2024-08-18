@@ -31,7 +31,7 @@ if (isset($_GET['post_id']))
 
 // Handle the post operation here
 $errors = array();
-if ($_POST)
+if ($_POST && $_POST['action'] === 'Submit')
 {
 	// Validate these first
 	$title = $_POST['post-title'];
@@ -70,6 +70,12 @@ if ($_POST)
 		redirectAndExit('edit-post.php?post_id=' . $postId);
 	}
 }
+
+if ($_POST && $_POST['action'] === 'Preview') {
+	$body = $_POST['post-body'];
+}
+
+$markdown = renderMarkdown($body);
 
 ?>
 <html>
@@ -116,12 +122,14 @@ if ($_POST)
 					><?php echo htmlspecialchars($body) ?></textarea>
 			</div>
 			<div>
-				<input
-					type="submit"
-					value="Submit comment"
-				/>
+				<input type="submit" name="action" value="Submit" />
+				<input type="submit" name="action" value="Preview" />
 				<a href="index.php">Cancel</a>
 			</div>
 		</form>
+		<h2>Rendered Markdown</h2>
+		<div id="post-preview">
+			<?php echo $markdown ?>
+		</div>
 	</body>
 </html>
