@@ -18,10 +18,10 @@ else
 // Connect to the database, run a query, handle errors
 $pdo = getPDO();
 $post = getPostRow($pdo, $postId);
-$commentCount = $row['comment_count'];
+$commentCount = $post['comment_count'];
 
 // If the post does not exist, let's deal with that here
-if (!$row)
+if (!$post)
 {
 	redirectAndExit('index.php?not-found=1');
 }
@@ -60,7 +60,7 @@ else
 	<head>
 		<title>
 			A blog application |
-			<?php echo htmlspecialchars($row['title']) ?>
+			<?php echo htmlspecialchars($post['title']) ?>
 		</title>
 		<?php require 'templates/head.php' ?>
 	</head>
@@ -69,14 +69,14 @@ else
 
 		<div class="post">
 			<h2>
-				<?php echo htmlspecialchars($row['title']) ?>
+				<?php echo htmlspecialchars($post['title']) ?>
 			</h2>
 			<div class="date">
-				<?php echo convertSqlDate($row['created_at']) ?>
+				<?php echo convertSqlDate($post['created_at']) ?>
 			</div>
 
 			<?php // This is already escaped, so doesn't need further escaping ?>
-			<?php echo renderMarkdown($row['body']) ?>
+			<?php echo renderMarkdown($post['body']) ?>
 		</div>
 
 		<?php require 'templates/list-comments.php' ?>

@@ -16,7 +16,9 @@
 		<div class="comment">
 			<div class="comment-meta">
 				Comment from
-				<?php echo htmlspecialchars($comment['name']) ?>
+				<a href="https://<?php echo htmlspecialchars($comment['website']) ?>">
+					<?php echo htmlspecialchars($comment['name']) ?>
+				</a>
 				on
 				<?php echo convertSqlDate($comment['created_at']) ?>
 				<?php if (isLoggedIn()): ?>
