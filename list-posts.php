@@ -39,7 +39,7 @@ $posts = getAllPosts($pdo);
 	<body>
 		<?php require 'templates/top-menu.php' ?>
 
-		<h1>Post list</h1>
+		<h1><?php echo $get_word['post-list'] ?></h1>
 
 		<p>You have <?php echo count($posts) ?> posts.
 
@@ -47,9 +47,9 @@ $posts = getAllPosts($pdo);
 			<table id="post-list">
 				<thead>
 					<tr>
-						<th>Title</th>
-						<th>Creation date</th>
-						<th>Comments</th>
+						<th><?php echo $get_word['post-title'] ?></th>
+						<th><?php echo $get_word['creation-date'] ?></th>
+						<th><?php echo $get_word['Comments'] ?></th>
 						<th />
 						<th />
 					</tr>
@@ -67,14 +67,14 @@ $posts = getAllPosts($pdo);
 								<?php echo $post['comment_count'] ?>
 							</td>
 							<td>
-								<a href="edit-post.php?post_id=<?php echo $post['id']?>">Edit</a>
+								<a href="edit-post.php?post_id=<?php echo $post['id']?>"><?php echo $get_word['edit'] ?></a>
 							</td>
 							<td>
-								<input
+								<button
 									type="submit"
 									name="delete-post[<?php echo $post['id']?>]"
 									value="Delete"
-								/>
+								><?php echo $get_word['delete'] ?></button>
 							</td>
 						</tr>
 					<?php endforeach ?>

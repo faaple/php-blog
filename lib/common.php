@@ -107,6 +107,19 @@ function renderMarkdown($markdown) {
     return $parsedown->text($markdown);
 }
 
+function get_lang() {
+	if (!isset($_SESSION['lang'])) {
+		$_SESSION['lang'] = 'en';
+	}
+	return $_SESSION['lang'];
+}
+
+function getLanguageSwitcherLink($newLang) {
+    $queryParams = $_GET;
+    $queryParams['lang'] = $newLang; // Update or add the 'lang' parameter
+    return '?' . http_build_query($queryParams);
+}
+
 function redirectAndExit($script)
 {
 	$relativeUrl = $_SERVER['PHP_SELF'];

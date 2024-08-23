@@ -1,5 +1,7 @@
 <?php
 return [
+    // title
+    'summary' => 'Welcome to my lair on the internet.',
     // navigation
     'login' => 'Log in',
     'logout' => 'Log out',
@@ -26,7 +28,9 @@ return [
     'creation-date' => 'Creation date',
     'delete' => 'Delete',
     // comment
+    'add-comment' => 'Add your comment',
     'name' => 'Name',
     'website' => 'Website',
     'comment' => 'Comment',
+    "submit-comment" => "Submit comment",
 ];

@@ -34,7 +34,7 @@ $notFound = isset($_GET['not-found']);
 					<div class="meta">
 						<?php echo convertSqlDate($post['created_at']) ?>
 
-						(<?php echo $post['comment_count'] ?> comments)
+						(<?php echo $post['comment_count'] . ' ' . $get_word['comments']?>)
 					</div>
 					<p>
 						<?php echo htmlspecialchars($post['body']) ?>
@@ -42,12 +42,12 @@ $notFound = isset($_GET['not-found']);
 					<div class="post-controls">
 						<a
 							href="view-post.php?post_id=<?php echo $post['id'] ?>"
-						>Read more...</a>
+						><?php echo $get_word['read-more'] ?></a>
 						<?php if (isLoggedIn()): ?>
 							|
 							<a
 								href="edit-post.php?post_id=<?php echo $post['id'] ?>"
-							>Edit</a>
+							><?php echo $get_word['edit'] ?></a>
 						<?php endif ?>
 					</div>
 				</div>

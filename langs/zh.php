@@ -1,5 +1,7 @@
 <?php
 return [
+    // title
+    'summary' => '欢迎来到我的网上巢穴。',
     // navigation
     'login' => '登录',
     'logout' => '退出',
@@ -26,7 +28,9 @@ return [
     'creation-date' => '创建日期',
     'delete' => '删除',
     // comment
+    'add-comment' => '添加评论',
     'name' => '用户名',
     'website' => '网站',
     'comment' => '输入评论',
+    "submit-comment" => '提交评论',
 ];

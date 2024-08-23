@@ -1,4 +1,6 @@
 <?php 
+require_once 'lib/common.php';
+
 if (isset($_GET['lang'])) {
 	$_SESSION['lang'] = $_GET['lang'];
 } else if (!isset($_SESSION['lang'])) {
@@ -12,9 +14,9 @@ $get_word = include "langs/{$lang}.php";
 	<div class="menu-options">
 		<span class="language-toggle">
 			<?php if ($lang === 'en'): ?>
-				<a href="?lang=zh">中文</a>
+				<a href="<?php echo getLanguageSwitcherLink('zh') ?>">中文</a>
 			<?php elseif ($lang === 'zh'): ?>
-				<a href="?lang=en">English</a>
+				<a href="<?php echo getLanguageSwitcherLink('en') ?>">English</a>
 			<?php endif ?>
 			||
 		</span>

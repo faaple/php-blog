@@ -87,9 +87,9 @@ $markdown = renderMarkdown($body);
 		<?php require 'templates/top-menu.php' ?>
 
 		<?php if (isset($_GET['post_id'])): ?>
-			<h1>Edit post</h1>
+			<h1><?php echo $get_word['edit-post'] ?></h1>
 		<?php else: ?>
-			<h1>New post</h1>
+			<h1><?php echo $get_word['new-post'] ?></h1>
 		<?php endif ?>
 
 		<?php if ($errors): ?>
@@ -104,7 +104,7 @@ $markdown = renderMarkdown($body);
 
 		<form method="post" class="post-form user-form">
 			<div>
-				<label for="post-title">Title:</label>
+				<label for="post-title"><?php echo $get_word['post-title'] ?>:</label>
 				<input
 					id="post-title"
 					name="post-title"
@@ -113,7 +113,7 @@ $markdown = renderMarkdown($body);
 				/>
 			</div>
 			<div>
-				<label for="post-body">Body:</label>
+				<label for="post-body"><?php echo $get_word['post-body'] ?>:</label>
 				<textarea
 					id="post-body"
 					name="post-body"
@@ -122,12 +122,12 @@ $markdown = renderMarkdown($body);
 					><?php echo htmlspecialchars($body) ?></textarea>
 			</div>
 			<div>
-				<input type="submit" name="action" value="Submit" />
-				<input type="submit" name="action" value="Preview" />
-				<a href="index.php">Cancel</a>
+				<button type="submit" name="action" value="Submit"><?php echo $get_word['submit'] ?></button>
+				<button type="submit" name="action" value="Preview"><?php echo $get_word['preview'] ?></button>
+				<a href="index.php"><?php echo $get_word['cancel'] ?></a>
 			</div>
 		</form>
-		<h2>Rendered Markdown</h2>
+		<h2><?php echo $get_word['rendered-markdown'] ?></h2>
 		<div id="post-preview">
 			<?php echo $markdown ?>
 		</div>
