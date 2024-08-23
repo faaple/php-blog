@@ -1,6 +1,7 @@
 <?php
 require_once 'lib/common.php';
 require_once 'lib/list-posts.php';
+require_once 'lib/view-post.php';
 
 session_start();
 
@@ -27,7 +28,7 @@ if ($_POST)
 
 // Connect to the database, run a query
 $pdo = getPDO();
-$posts = getAllPosts($pdo);
+$posts = getAllPosts($pdo, 'zh');
 
 ?>
 <!DOCTYPE html>
@@ -57,18 +58,18 @@ $posts = getAllPosts($pdo);
 				<tbody>
 					<?php foreach ($posts as $post): ?>
 						<tr>
-							<td>
-								<?php echo htmlspecialchars($post['title']) ?>
-							</td>
-							<td>
-								<?php echo convertSqlDate($post['created_at']) ?>
-							</td>
-							<td>
-								<?php echo $post['comment_count'] ?>
-							</td>
-							<td>
-								<a href="edit-post.php?post_id=<?php echo $post['id']?>"><?php echo $get_word['edit'] ?></a>
-							</td>
+							<?php $xltn_post = getPostRow($pdo, $post['xltn_post_id']) ?>
+							<?php if ($_SESSION['lang'] == 'zh'): ?>
+								<td><?php echo htmlspecialchars($post['title']) ?></td>
+								<td><?php echo convertSqlDate($post['created_at']) ?></td>
+								<td><?php echo $post['comment_count'] ?></td>
+								<td><a href="edit-post.php?post_id=<?php echo $post['id'] ?>"><?php echo $get_word['edit'] ?></a></td>
+							<?php else: ?>
+								<td><?php echo htmlspecialchars($xltn_post['title']) ?></td>
+								<td><?php echo convertSqlDate($xltn_post['created_at']) ?></td>
+								<td><?php echo $xltn_post['comment_count'] ?></td>
+								<td><a href="edit-post.php?post_id=<?php echo $post['xltn_post_id'] ?>"><?php echo $get_word['edit'] ?></a></td>
+							<?php endif ?>
 							<td>
 								<button
 									type="submit"

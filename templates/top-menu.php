@@ -3,6 +3,10 @@ require_once 'lib/common.php';
 
 if (isset($_GET['lang'])) {
 	$_SESSION['lang'] = $_GET['lang'];
+	if (isset($_GET['post_id']) && $post['lang'] != $_SESSION['lang']) {
+		$_GET['post_id'] = $post['xltn_post_id'];
+	}
+	refresh();
 } else if (!isset($_SESSION['lang'])) {
 	$_SESSION['lang'] = 'en';
 }

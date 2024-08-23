@@ -67,19 +67,24 @@ function getSqlDateForNow()
  * Gets a list of posts in reverse order
  * 
  * @param PDO $pdo
+ * @param string $lang
  * @return array
  */
-function getAllPosts(PDO $pdo)
+function getAllPosts(PDO $pdo, string $lang)
 {
-	$stmt = $pdo->query(
-		'SELECT
-			id, title, created_at, body,
+	$sql = "
+		SELECT
+			id, title, created_at, body, lang, xltn_post_id,
 			(SELECT COUNT(*) FROM comment WHERE comment.post_id = post.id) comment_count
 		FROM
 			post
+		WHERE
+			lang = :lang
 		ORDER BY
-			created_at DESC'
-	);
+			created_at DESC
+	";
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute(['lang' => $lang]);
 	if ($stmt === false)
 	{
 		throw new Exception('There was a problem running this query');
@@ -120,6 +125,22 @@ function getLanguageSwitcherLink($newLang) {
     return '?' . http_build_query($queryParams);
 }
 
+function refresh() {
+    $queryParams = $_GET;
+	unset($queryParams['lang']);
+
+	$relativeUrl = $_SERVER['PHP_SELF'];
+	$host = $_SERVER['HTTP_HOST'];
+	if ($queryParams) {
+		header('Location: http://' . $host . $relativeUrl . '?' . http_build_query($queryParams));
+		exit();
+	} else {
+		header('Location: http://' . $host . $relativeUrl);
+		exit();
+	}
+	
+}
+
 function redirectAndExit($script)
 {
 	$relativeUrl = $_SERVER['PHP_SELF'];
@@ -145,7 +166,9 @@ function getCommentsForPost(PDO $pdo, $postId)
 		FROM
 			comment
 		WHERE
-			post_id = :post_id		
+			post_id = :post_id
+		ORDER BY
+			created_at DESC
 	";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute(
