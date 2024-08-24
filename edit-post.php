@@ -124,8 +124,10 @@ if ($_POST && $_POST['action'] === 'Submit')
 				<a href="index.php"><?php echo $get_word['cancel'] ?></a>
 			</div>
 		</form>
-		<h2><?php echo $get_word['rendered-markdown'] ?></h2>
-		<div id="post-preview"></div>
+		<div id="preview">
+			<h2><?php echo $get_word['rendered-markdown'] ?></h2>
+			<div id="post-preview"></div>
+		</div>
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     	<script src="assets/markdown.js"></script>
 		<script src="assets/upload.js"></script>

@@ -78,10 +78,8 @@ else
 			<?php // This is already escaped, so doesn't need further escaping ?>
 			<?php echo renderMarkdown($post['body']) ?>
 		</div>
-
-		<?php require 'templates/list-comments.php' ?>
-
 		<?php // We use $commentData in this HTML fragment ?>
 		<?php require 'templates/comment-form.php' ?>
+		<?php require 'templates/list-comments.php' ?>
 	</body>
 </html>

@@ -23,6 +23,7 @@
 	font-size: 1.2em;
 }
 
+/* Navigation */
 .top-menu {
 	border: 1px dotted silver;
 	min-height: 18px;
@@ -34,6 +35,7 @@
 	float: right;
 }
 
+/* General */
 h1, h2, h3 {
 	margin-top: 0;
 	margin-bottom: 8px;
@@ -41,8 +43,11 @@ h1, h2, h3 {
 
 body {
 	font-family: sans-serif;
+	max-width: 50em;
+	margin: 0 auto;
 }
 
+/* Index */
 .post-synopsis {
 	padding-bottom: 8px;
 	border-bottom: 1px dotted silver;
@@ -62,6 +67,17 @@ body {
 	font-size: 0.95em;
 }
 
+.post img, #post-preview img {
+	max-width: 40em;
+	margin: 0 auto;
+	display: block;
+}
+
+#post-preview {
+	margin-left: 7em;
+}
+
+/* Comment */
 .comment .comment-meta {
 	font-size: 0.85em;
 	color: grey;
@@ -87,8 +103,14 @@ body {
 	margin-bottom: 8px;
 }
 
+/* Form */
+.user-form {
+	margin-bottom: 1em;
+}
+
 .user-form input,
-.user-form textarea {
+.user-form textarea,
+.user-form button {
 	margin: 4px;
 }
 
@@ -103,6 +125,7 @@ body {
 	clear: left;
 }
 
+/* Post List View */
 #post-list {
 	border-collapse: collapse;
 	border: 1px solid silver;
