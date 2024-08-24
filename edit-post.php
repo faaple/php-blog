@@ -122,6 +122,10 @@ $markdown = renderMarkdown($body);
 					><?php echo htmlspecialchars($body) ?></textarea>
 			</div>
 			<div>
+				<label for="image-input"><?php echo $get_word['image'] ?>:</label>
+				<input type="file" id="image-input" accept="image/*">
+			</div>
+			<div>
 				<button type="submit" name="action" value="Submit"><?php echo $get_word['submit'] ?></button>
 				<button type="submit" name="action" value="Preview"><?php echo $get_word['preview'] ?></button>
 				<a href="index.php"><?php echo $get_word['cancel'] ?></a>
@@ -131,5 +135,6 @@ $markdown = renderMarkdown($body);
 		<div id="post-preview">
 			<?php echo $markdown ?>
 		</div>
+		<script src="assets/upload.js"></script>
 	</body>
 </html>

@@ -23,6 +23,7 @@ return [
     'preview' => 'Preview',
     'cancel' => 'Cancel',
     'rendered-markdown' => 'Rendered Markdown',
+    'image' => 'Image',
     // post list
     'post-list' => 'Post list',
     'creation-date' => 'Creation date',

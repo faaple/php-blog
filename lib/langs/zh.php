@@ -23,6 +23,7 @@ return [
     'preview' => '预览',
     'cancel' => '取消',
     'rendered-markdown' => '渲染后的 Markdown',
+    'image' => '图片',
     // post list
     'post-list' => '归档',
     'creation-date' => '创建日期',
