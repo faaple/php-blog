@@ -1,6 +1,6 @@
 <?php require 'top-menu.php' ?>
 
 <a href="/">
-	<h1>Blog title</h1>
+	<h1>Faaple @ Blog</h1>
 </a>
-<p>This paragraph summarises what the blog is about.</p>
+<p><?php echo $get_word['summary'] ?></p>

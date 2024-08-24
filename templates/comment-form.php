@@ -16,7 +16,7 @@
 	</div>
 <?php endif ?>
 
-<h3>Add your comment</h3>
+<h3><?php echo $get_word['add-comment'] ?></h3>
 
 <form
 	action="view-post.php?action=add-comment&amp;post_id=<?php echo $postId?>"
@@ -25,7 +25,7 @@
 >
 	<div>
 		<label for="comment-name">
-			Name:
+		<?php echo $get_word['name'] ?>:
 		</label>
 		<input
 			type="text"
@@ -36,7 +36,7 @@
 	</div>
 	<div>
 		<label for="comment-website">
-			Website:
+		<?php echo $get_word['website'] ?>:
 		</label>
 		<input
 			type="text"
@@ -47,7 +47,7 @@
 	</div>
 	<div>
 		<label for="comment-text">
-			Comment:
+		<?php echo $get_word['comment'] ?>:
 		</label>
 		<textarea
 			id="comment-text"
@@ -58,6 +58,6 @@
 	</div>
 
 	<div>
-		<input type="submit" value="Submit comment" />
+		<button type="submit" value="Submit comment"><?php echo $get_word['submit-comment'] ?></button>
 	</div>
 </form>

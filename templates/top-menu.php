@@ -1,20 +1,24 @@
 <?php 
+require_once 'lib/common.php';
+
 if (isset($_GET['lang'])) {
 	$_SESSION['lang'] = $_GET['lang'];
-} else if (!isset($_SESSION['lang'])) {
-	$_SESSION['lang'] = 'en';
+	if (isset($_GET['post_id']) && $post['lang'] != $_SESSION['lang']) {
+		$_GET['post_id'] = $post['xltn_post_id'];
+	}
+	refresh();
 }
-$lang = $_SESSION['lang'];
-$get_word = include "langs/{$lang}.php";
+$lang = get_lang();
+$get_word = include "lib/langs/{$lang}.php";
 
 ?>
 <div class="top-menu">
 	<div class="menu-options">
 		<span class="language-toggle">
 			<?php if ($lang === 'en'): ?>
-				<a href="?lang=zh">中文</a>
+				<a href="<?php echo getLanguageSwitcherLink('zh') ?>">中文</a>
 			<?php elseif ($lang === 'zh'): ?>
-				<a href="?lang=en">English</a>
+				<a href="<?php echo getLanguageSwitcherLink('en') ?>">English</a>
 			<?php endif ?>
 			||
 		</span>

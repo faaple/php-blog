@@ -32,55 +32,128 @@ DROP TABLE IF EXISTS post;
 
 CREATE TABLE post (
 	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	lang VARCHAR NOT NULL,
+	xltn_post_id INT,
 	title VARCHAR NOT NULL,
 	body VARCHAR NOT NULL,
 	user_id INTEGER NOT NULL,
 	created_at VARCHAR NOT NULL,
 	updated_at VARCHAR,
+	FOREIGN KEY (xltn_post_id) REFERENCES post(id),
 	FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 INSERT INTO
 	post
 	(
-		title, body, user_id, created_at
+		lang, title, body, user_id, created_at, xltn_post_id
 	)
 	VALUES(
+		"zh",
+		"这是我们的第一篇帖子",
+		"这是第一篇帖子的正文。
+
+它分为几个不同的段落。",
+		1,
+		datetime('now', '-2 months', '-45 minutes', '+10 seconds'),
+		NULL
+	)
+;
+
+INSERT INTO
+	post
+	(
+		lang, title, body, user_id, created_at, xltn_post_id
+	)
+	VALUES(
+		"zh",
+		"这是第二篇",
+		"这是第二篇贴子的正文。
+这是另外一个段落。",
+		1,
+		datetime('now', '-40 days', '+815 minutes', '+37 seconds'),
+		NULL
+	)
+;
+
+INSERT INTO
+	post
+	(
+		lang, title, body, user_id, created_at, xltn_post_id
+	)
+	VALUES(
+		"zh",
+		"第三篇",
+		"这是第三篇的正文。
+和它的段落。",
+		1,
+		datetime('now', '-13 days', '+198 minutes', '+51 seconds'),
+		NULL
+	)
+;
+
+INSERT INTO
+	post
+	(
+		lang, title, body, user_id, created_at, xltn_post_id
+	)
+	VALUES(
+		"en",
 		"Here's our first post",
 		"This is the body of the first post.
 
 It is split into paragraphs.",
 		1,
-		datetime('now', '-2 months', '-45 minutes', '+10 seconds')
+		datetime('now', '-2 months', '-45 minutes', '+10 seconds'),
+		1
 	)
 ;
 
 INSERT INTO
 	post
 	(
-		title, body, user_id, created_at
+		lang, title, body, user_id, created_at, xltn_post_id
 	)
 	VALUES(
+		"en",
 		"Now for a second article",
 		"This is the body of the second post.
 This is another paragraph.",
 		1,
-		datetime('now', '-40 days', '+815 minutes', '+37 seconds')
+		datetime('now', '-40 days', '+815 minutes', '+37 seconds'),
+		2
 	)
 ;
 
 INSERT INTO
 	post
 	(
-		title, body, user_id, created_at
+		lang, title, body, user_id, created_at, xltn_post_id
 	)
 	VALUES(
+		"en",
 		"Here's a third post",
 		"This is the body of the third post.
 This is split into paragraphs.",
 		1,
-		datetime('now', '-13 days', '+198 minutes', '+51 seconds')
+		datetime('now', '-13 days', '+198 minutes', '+51 seconds'),
+		3
 	)
+;
+
+UPDATE post
+SET xltn_post_id = 4
+WHERE id = 1
+;
+
+UPDATE post
+SET xltn_post_id = 5
+WHERE id = 2
+;
+
+UPDATE post
+SET xltn_post_id = 6
+WHERE id = 3
 ;
 
 DROP TABLE IF EXISTS comment;
@@ -101,7 +174,7 @@ INSERT INTO
 		post_id, created_at, name, website, text
 	)
 	VALUES(
-		1,
+		4,
 		datetime('now', '-10 days', '+231 minutes', '+7 seconds'),
 		'Jimmy',
 		'http://example.com/',
@@ -115,7 +188,7 @@ INSERT INTO
 		post_id, created_at, name, website, text
 	)
 	VALUES(
-		1,
+		4,
 		datetime('now', '-8 days', '+549 minutes', '+32 seconds'),
 		'Jonny',
 		'http://anotherexample.com/',

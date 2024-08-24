@@ -39,7 +39,7 @@ function addPost(PDO $pdo, $title, $body, $userId)
 
 function editPost(PDO $pdo, $title, $body, $postId)
 {
-	// Prepare the insert query
+	// Prepare the update query
 	$sql = "
 		UPDATE
 			post
