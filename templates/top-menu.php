@@ -9,7 +9,7 @@ if (isset($_GET['lang'])) {
 	refresh();
 }
 $lang = get_lang();
-$get_word = include "langs/{$lang}.php";
+$get_word = include "lib/langs/{$lang}.php";
 
 ?>
 <div class="top-menu">
