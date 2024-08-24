@@ -126,8 +126,8 @@ if ($_POST && $_POST['action'] === 'Submit')
 		</form>
 		<h2><?php echo $get_word['rendered-markdown'] ?></h2>
 		<div id="post-preview"></div>
-		<script src="assets/upload.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     	<script src="assets/markdown.js"></script>
+		<script src="assets/upload.js"></script>
 	</body>
 </html>

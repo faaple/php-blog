@@ -15,6 +15,10 @@ document.getElementById('image-input').addEventListener('change', function(){
             let markdown = `![alt text](${data.url})`;
             let textarea = document.getElementById('post-body');
             textarea.value += markdown;
+            // Update preview
+            const preview = document.getElementById('post-preview');
+            const markdownText = textarea.value;
+            preview.innerHTML = marked.parse(markdownText); // Convert markdown to HTML and update the preview
         } else {
             alert(data.error);
         }
