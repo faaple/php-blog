@@ -59,7 +59,7 @@ $posts = getAllPosts($pdo, 'zh');
 					<?php foreach ($posts as $post): ?>
 						<tr>
 							<?php $xltn_post = getPostRow($pdo, $post['xltn_post_id']) ?>
-							<?php if ($_SESSION['lang'] == 'zh'): ?>
+							<?php if (get_lang() == 'zh'): ?>
 								<td><?php echo htmlspecialchars($post['title']) ?></td>
 								<td><?php echo convertSqlDate($post['created_at']) ?></td>
 								<td><?php echo $post['comment_count'] ?></td>

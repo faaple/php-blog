@@ -7,10 +7,8 @@ if (isset($_GET['lang'])) {
 		$_GET['post_id'] = $post['xltn_post_id'];
 	}
 	refresh();
-} else if (!isset($_SESSION['lang'])) {
-	$_SESSION['lang'] = 'en';
 }
-$lang = $_SESSION['lang'];
+$lang = get_lang();
 $get_word = include "langs/{$lang}.php";
 
 ?>

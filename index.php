@@ -5,7 +5,8 @@ session_start();
 
 // Connect to the database, run a query, handle errors
 $pdo = getPDO();
-$posts = getAllPosts($pdo, $_SESSION['lang']);
+$lang = get_lang();
+$posts = getAllPosts($pdo, $lang);
 
 $notFound = isset($_GET['not-found']);
 
