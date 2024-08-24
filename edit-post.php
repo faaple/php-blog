@@ -71,12 +71,6 @@ if ($_POST && $_POST['action'] === 'Submit')
 	}
 }
 
-if ($_POST && $_POST['action'] === 'Preview') {
-	$body = $_POST['post-body'];
-}
-
-$markdown = renderMarkdown($body);
-
 ?>
 <html>
 	<head>
@@ -127,14 +121,13 @@ $markdown = renderMarkdown($body);
 			</div>
 			<div>
 				<button type="submit" name="action" value="Submit"><?php echo $get_word['submit'] ?></button>
-				<button type="submit" name="action" value="Preview"><?php echo $get_word['preview'] ?></button>
 				<a href="index.php"><?php echo $get_word['cancel'] ?></a>
 			</div>
 		</form>
 		<h2><?php echo $get_word['rendered-markdown'] ?></h2>
-		<div id="post-preview">
-			<?php echo $markdown ?>
-		</div>
+		<div id="post-preview"></div>
 		<script src="assets/upload.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    	<script src="assets/markdown.js"></script>
 	</body>
 </html>
