@@ -4,7 +4,7 @@ document.getElementById('image-input').addEventListener('change', function(){
     formData.append('file', this.files[0]);
     console.log(formData);
 
-    fetch('/php-blog/upload.php', {
+    fetch('/upload.php', {
         method: 'POST',
         body: formData
     })
