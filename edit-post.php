@@ -55,12 +55,22 @@ if ($_POST && $_POST['action'] === 'Submit')
 		}
 		else
 		{
+			if (isset($_GET['xltn_id'])) {
+				$xltnId = $_GET['xltn_id'];
+			} else {
+				$xltnId = NULL;
+			}
+			
 			$userId = getAuthUserId($pdo);
-			$postId = addPost($pdo, $title, $body, $userId);
+			$postId = addPost($pdo, $title, $body, $userId, $xltnId);
 
 			if ($postId === false)
 			{
 				$errors[] = 'Post operation failed';
+			}
+			else if ($xltnId != NULL)
+			{
+				addXltnPost($pdo, $xltnId, $postId);
 			}
 		}
 	}
