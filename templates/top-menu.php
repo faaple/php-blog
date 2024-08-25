@@ -4,6 +4,9 @@ require_once 'lib/common.php';
 if (isset($_GET['lang'])) {
 	$_SESSION['lang'] = $_GET['lang'];
 	if (isset($_GET['post_id']) && $post['lang'] != $_SESSION['lang']) {
+		if ($post['xltn_post_id'] == NULL) {
+			$_GET['xltn_id'] = $_GET['post_id'];
+		}
 		$_GET['post_id'] = $post['xltn_post_id'];
 	}
 	refresh();

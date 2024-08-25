@@ -1,14 +1,14 @@
 <?php
 
-function addPost(PDO $pdo, $title, $body, $userId)
+function addPost(PDO $pdo, $title, $body, $userId, $xltnId)
 {
 	// Prepare the insert query
 	$sql = "
 		INSERT INTO
 			post
-			(title, body, user_id, created_at)
+			(title, body, user_id, created_at, lang, xltn_post_id)
 			VALUES
-			(:title, :body, :user_id, :created_at)
+			(:title, :body, :user_id, :created_at, :lang, :xltn_post_id)
 	";
 	$stmt = $pdo->prepare($sql);
 	if ($stmt === false)
@@ -23,6 +23,8 @@ function addPost(PDO $pdo, $title, $body, $userId)
 			'body' => $body,
 			'user_id' => $userId,
 			'created_at' => getSqlDateForNow(),
+			'lang' => get_lang(),
+			'xltn_post_id' => $xltnId,
 		)
 	);
 	if ($result === false)
@@ -35,6 +37,37 @@ function addPost(PDO $pdo, $title, $body, $userId)
 	$stmtSeq = $pdo->query($sqlSeq);
 
 	return $stmtSeq->fetchColumn();
+}
+
+function addXltnPost(PDO $pdo, $postId, $xltnId) {
+	// Prepare the update query
+	$sql = "
+		UPDATE
+			post
+		SET
+			xltn_post_id = :xltn_post_id
+		WHERE
+			id = :post_id
+	";
+	$stmt = $pdo->prepare($sql);
+	if ($stmt === false)
+	{
+		throw new Exception('Could not prepare post update query');
+	}
+
+	// Now run the query, with these parameters
+	$result = $stmt->execute(
+		array(
+			'xltn_post_id' => $xltnId,
+			'post_id' => $postId,
+		)
+	);
+	if ($result === false)
+	{
+		throw new Exception('Could not run post update query');
+	}
+
+	return true;
 }
 
 function editPost(PDO $pdo, $title, $body, $postId)
